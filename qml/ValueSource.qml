@@ -53,7 +53,29 @@ import QtQuick 2.2
 Item {
     id: valueSource
     property real kph: cbackend.getDataGauge
-    property real rpm: 1
+    property real rpm: {
+        if(kph >= 0 && kph < 30)
+        {
+
+        }
+        if(kph >= 30 && kph < 50)
+        {
+
+        }
+        if(kph >= 50 && kph < 80)
+        {
+
+        }
+        if(kph >= 80 && kph < 120)
+        {
+
+        }
+        if(kph >= 120)
+        {
+
+        }
+    }
+
     property real fuel: 0.85
     property string gear: {
         var g;
@@ -76,8 +98,9 @@ Item {
             return "5";
         }
     }
+
     property int turnSignal: cbackend.getBlinkerSide
-    property real temperature: 0.6
+    property real temperature: 0.1
     property bool start: true
 //! [0]
 

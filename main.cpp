@@ -70,11 +70,6 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     QQmlComponent component(&engine, QUrl(QStringLiteral("qrc:/qml/dashboard.qml")));
-    QFile file("qrc:/qml/qmlSaS/main.qml");
-    if (file.exists())
-        qDebug() << "qrc:/qml/qmlSaS/main.qml exists!";
-    else
-        qDebug() << "qrc:/qml/qmlSaS/main.qml not exists!";
 
     QObject *object = component.create();
     QScopedPointer<CBackend> cbackend(new CBackend(object));

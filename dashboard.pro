@@ -8,6 +8,7 @@ QT += serialport
 
 SOURCES += \
     cbackend.cpp \
+    cserialport.cpp \
     main.cpp
 
 RESOURCES += \
@@ -25,4 +26,5 @@ target.path = $$[QT_INSTALL_EXAMPLES]/quickcontrols/extras/dashboard
 INSTALLS += target
 
 HEADERS += \
-    cbackend.h
+    cbackend.h \
+    cserialport.h

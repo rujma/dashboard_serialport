@@ -1,5 +1,5 @@
 #include <QDebug>
-#include <QSerialPort>
+
 #include "cbackend.h"
 
 CBackend::CBackend(QObject* object, QObject *parent) : QObject(parent)
@@ -7,6 +7,8 @@ CBackend::CBackend(QObject* object, QObject *parent) : QObject(parent)
     m_dDataGauge = 0.0;
     m_dBlinkerSide = -1;
     timerId = startTimer(1000);
+    serialPortThread = new CSerialPort(this);
+    serialPortThread->start();
 }
 
 
@@ -15,20 +17,6 @@ CBackend::~CBackend()
 
 }
 
-void CBackend::startSerial(const QString &portName)
-{
-    run();
-}
-
-void CBackend::run()
-{
-    QSerialPort serial;
-    /* Here we read the data coming from the serial port */
-    for(;;)
-    {
-
-    }
-}
 
 void CBackend::timerEvent(QTimerEvent *event)
 {

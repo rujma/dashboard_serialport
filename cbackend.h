@@ -10,6 +10,8 @@
 #include <QDir>
 #include <QCoreApplication>
 #include <QThread>
+#include "cserialport.h"
+
 
 class CBackend : public QObject
 {
@@ -20,7 +22,6 @@ class CBackend : public QObject
 public:
     explicit CBackend(QObject* object, QObject *parent = nullptr);
     ~CBackend();
-    void startSerial(const QString &portName);
 
     double getDataGauge(){
         return m_dDataGauge;
@@ -55,7 +56,7 @@ private:
     int m_dBlinkerSide;
     int timerId;
 
-    void run();
+    CSerialPort *serialPortThread; //Pointer to CSerialPort thread
 
 protected:
     void timerEvent(QTimerEvent *event);

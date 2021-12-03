@@ -6,6 +6,8 @@ CBackend::CBackend(QObject* object, QString comName, QObject *parent) : QObject(
 {
     m_dDataGauge = 0.0;
     m_dBlinkerSide = -1;
+    m_dFuelLevel = 85;
+    m_dTemperature = 20;
     timerId = startTimer(1000);
     serialPortThread = new CSerialPort(comName, this);
     serialPortThread->start();

@@ -2,12 +2,12 @@
 
 #include "cbackend.h"
 
-CBackend::CBackend(QObject* object, QObject *parent) : QObject(parent)
+CBackend::CBackend(QObject* object, QString comName, QObject *parent) : QObject(parent)
 {
     m_dDataGauge = 0.0;
     m_dBlinkerSide = -1;
     timerId = startTimer(1000);
-    serialPortThread = new CSerialPort(this);
+    serialPortThread = new CSerialPort(comName, this);
     serialPortThread->start();
 }
 

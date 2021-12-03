@@ -20,7 +20,7 @@ class CBackend : public QObject
     Q_PROPERTY(int getBlinkerSide READ getBlinkerSide NOTIFY blinkerSideChanged);
 
 public:
-    explicit CBackend(QObject* object, QObject *parent = nullptr);
+    explicit CBackend(QObject* object, QString comName, QObject *parent = nullptr);
     ~CBackend();
 
     double getDataGauge(){

@@ -1,13 +1,18 @@
 #include <QDebug>
+#include <QSerialPortInfo>
 
 #include "cserialport.h"
 
 
-CSerialPort::CSerialPort(QObject *parent) : QThread(parent)
+CSerialPort::CSerialPort(QString comName, QObject *parent) : QThread(parent)
 {
     m_quit = false;
     m_serial = new QSerialPort();
-    startSerial("COM3");
+    //const auto infos = QSerialPortInfo::availablePorts();
+    //for (const QSerialPortInfo &info : infos) {
+    //    qDebug() << info.portName();
+    //}
+    startSerial(comName);
 }
 
 CSerialPort::~CSerialPort()

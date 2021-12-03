@@ -55,6 +55,7 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QtQuickControls2/QQuickStyle>
+#include <QtWidgets>
 
 #include <QQmlComponent>
 #include <QFile>
@@ -70,9 +71,8 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
     QQmlComponent component(&engine, QUrl(QStringLiteral("qrc:/qml/dashboard.qml")));
-
     QObject *object = component.create();
-    QScopedPointer<CBackend> cbackend(new CBackend(object));
+    QScopedPointer<CBackend> cbackend(new CBackend(object, QCoreApplication::arguments().at(1)));
     engine.rootContext()->setContextProperty("cbackend", cbackend.data());
 
     return app.exec();

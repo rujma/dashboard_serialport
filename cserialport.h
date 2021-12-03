@@ -12,7 +12,7 @@ class CSerialPort : public QThread
 {
     Q_OBJECT
 public:
-    explicit CSerialPort(QObject *parent = nullptr);
+    explicit CSerialPort(QString comName, QObject *parent = nullptr);
     ~CSerialPort();
     void run();
     void stop();

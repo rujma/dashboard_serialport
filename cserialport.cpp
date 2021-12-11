@@ -3,6 +3,7 @@
 
 #include "cserialport.h"
 
+//#define DEBUG_STRINGS
 
 /*
  * @brief CSerialPort constructor
@@ -60,11 +61,30 @@ void CSerialPort::run()
              *  tmp <0...1024>\r\n
             */
             QString serialDataStr = QString(serialData);
-            QStringList tokens = serialDataStr.trimmed().split(" ");
+#ifdef DEBUG_STRINGS
             qDebug() << serialDataStr;
+#endif
+            QStringList tokens = serialDataStr.trimmed().split(" ");
+            /* Select command for execution */
+            if(tokens[0] == "kph") {
+                unsigned int kphValue = tokens[1].toUInt();
+                emit updateKph(kphValue);
+            }
+            else if(tokens[0] == "blk") {
+                unsigned int blinkerPosition = tokens[1].toUInt();
+                emit updateBlinker(blinkerPosition);
+            }
+            else if(tokens[0] == "gas") {
+                unsigned int gasLevel = tokens[1].toUInt();
+                emit updateFuelLevel(gasLevel);
+
+            }
+            else if(tokens[0] == "tmp") {
+                unsigned int temperatureValue = tokens[1].toUInt();
+                emit updateTemperature(temperatureValue);
+            }
         }
     }
-
 }
 
 /*
@@ -79,6 +99,7 @@ void CSerialPort::stop()
 /*
  * @brief CSerialPort function that configures and starts the serial port
  *
+ * @param {const QString&} portName Reference to the QString that contains the serial port to be configured
 */
 void CSerialPort::startSerial(const QString &portName)
 {

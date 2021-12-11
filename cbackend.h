@@ -12,6 +12,8 @@
 #include <QThread>
 #include "cserialport.h"
 
+#define TEST_MODE
+
 
 class CBackend : public QObject
 {
@@ -79,8 +81,11 @@ signals:
     void fuelLevelChanged();
     void temperatureChanged();
 
-
 public slots:
+    void backendUpdateKph(unsigned int);
+    void backendUpdateBlinker(unsigned int);
+    void backendUpdateTemperature(unsigned int);
+    void backendUpdateFuelLevel(unsigned int);
 
 private:
     double m_dDataGauge;
@@ -92,7 +97,9 @@ private:
     CSerialPort *serialPortThread; //Pointer to CSerialPort thread
 
 protected:
+#ifdef TEST_MODE
     void timerEvent(QTimerEvent *event);
+#endif
 
 
 };

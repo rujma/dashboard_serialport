@@ -56,27 +56,27 @@ Item {
     property real rpm: {
         if(kph >= 0 && kph < 30)
         {
-
+            return 0.2184 * kph + 1.6066;
         }
         if(kph >= 30 && kph < 50)
         {
-
+            return 0.3792 * kph - 10.646;
         }
         if(kph >= 50 && kph < 80)
         {
-
+            return 0.2497 * kph - 11.595;
         }
         if(kph >= 80 && kph < 120)
         {
-
+            return 0.18 * kph - 13.919;
         }
         if(kph >= 120)
         {
-
+            return 0.0431 * kph - 4.3384;
         }
     }
 
-    property real fuel: 0.85
+    property real fuel: cbackend.getFuelLevel / 100
     property string gear: {
         var g;
         if (kph == 0) {
@@ -100,7 +100,7 @@ Item {
     }
 
     property int turnSignal: cbackend.getBlinkerSide
-    property real temperature: 0.1
+    property real temperature: cbackend.getTemperature / 100
     property bool start: true
 //! [0]
 

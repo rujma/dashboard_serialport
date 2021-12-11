@@ -2,9 +2,8 @@
 A QT Dashboard fork that uses Serial Port commands as stimuli
 
 #TODO
-- Add command parsing
-- Create signals and handlers between QOBJECTS and Threads
-- Fix RPM curves according to the speedometer
+- Function commentaries Doxygen style
+- Test with simple Arduino code
 
 To deploy the application use qtwindeploy. Do not forget to add --qmldir sources.
 

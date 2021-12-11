@@ -23,10 +23,10 @@ private:
     bool m_quit;
 
 signals:
-    void updateBlinker(int); /* Set left, right blinker or off blinker */
-    void updateKph(int); /* Set speedometer */
-    void updateTemperature(double); /* Set oil temperature */
-    void updateFuelLevel(double);   /* Set fuel level */
+    void updateBlinker(unsigned int); /* Set left, right blinker or off blinker */
+    void updateKph(unsigned int); /* Set speedometer */
+    void updateTemperature(unsigned int); /* Set oil temperature */
+    void updateFuelLevel(unsigned int);   /* Set fuel level */
 
 
 };

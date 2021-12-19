@@ -8,6 +8,8 @@
 #include <QFile>
 #include <QSerialPort>
 
+//#define DEBUG_STRINGS
+
 class CSerialPort : public QThread
 {
     Q_OBJECT

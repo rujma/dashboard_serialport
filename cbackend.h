@@ -12,7 +12,7 @@
 #include <QThread>
 #include "cserialport.h"
 
-#define TEST_MODE
+//#define TEST_MODE
 
 
 class CBackend : public QObject

@@ -53,6 +53,7 @@ import QtQuick.Window 2.1
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 import QtQuick.Extras 1.4
+import QtQuick.Controls.Material 2.0
 
 Window {
     id: root
@@ -65,6 +66,21 @@ Window {
 
     ValueSource {
         id: valueSource
+    }
+
+    Button {
+        x: 14
+        y: 15
+        width: 69
+        height: 23
+        opacity: 0.599
+        text: "Exit"
+        layer.mipmap: false
+        layer.format: ShaderEffectSource.RGB
+        checkable: false
+        clip: false
+        onClicked: Qt.quit()
+
     }
 
     // Dashboards are typically in a landscape orientation, so we need to ensure
